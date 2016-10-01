@@ -17,5 +17,13 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/c3p0-0.9"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate-3.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysql-connector-java-5.1.24"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring_3.2_core"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-3.2-aop"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-3.2-persistence"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-3.2-web"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/struts-2.3"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
