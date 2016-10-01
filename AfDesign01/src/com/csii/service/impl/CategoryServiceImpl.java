@@ -5,6 +5,8 @@
  */
 package com.csii.service.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -25,15 +27,13 @@ import com.csii.util.HibernateSessionFactory;
  * 	description:	
  * 
  * */
+@SuppressWarnings("unchecked")
 public class CategoryServiceImpl implements CategoryService{
 	
 	private SessionFactory sessionFactory;
 	
 	protected Session getSession(){
-		if(sessionFactory!=null)
-			return sessionFactory.getCurrentSession();
-		System.out.println("2333");
-		return sessionFactory.openSession();
+		return sessionFactory.getCurrentSession();
 	}
 	
 	public SessionFactory getSessionFactory() {
@@ -46,26 +46,34 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public void save(Category category) {
-		/*// 通过工具类获取session
-		Session session = HibernateSessionFactory.getSession();
-		try{
-			//手动事务
-			session.getTransaction().begin();
-			//执行业务逻辑 
-			session.save(category);
-			//手动提交
-			session.getTransaction().commit();
-		} catch(Exception e){
-			session.getTransaction().rollback();
-			throw new RuntimeException(e);
-		} finally {
-			HibernateSessionFactory.closeSession();
-		}*/
+		getSession().save(category);
 	}
 	
 	@Override
 	public void update(Category category) {
 		getSession().update(category);
+	}
+
+	@Override
+	public void delete(Integer id) {
+//		Object obj = getSession().get(Category.class, id);
+//		if(obj!=null) getSession().delete(obj);
+		String hql = "DELETE Category WHERE id=:id";//占位符
+		getSession().createQuery(hql)
+			.setInteger("id", id)
+			.executeUpdate();
+	}
+
+	@Override
+	public Category get(int id) {
+		return (Category) getSession().get(Category.class, id);
+	}
+
+	@Override
+	public List<Category> query() {
+		String hql = "SELECT * FROM Category";
+		return getSession().createQuery(hql)
+				.list();
 	}
 }
 

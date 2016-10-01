@@ -5,6 +5,8 @@
  */
 package com.csii.service;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csii.model.Category;
@@ -26,7 +28,8 @@ import com.csii.model.Category;
 public interface CategoryService {
 	public void save(Category category);
 	public void update(Category category);
-	
-	
+	public void delete(Integer id);
+	public Category get(int id);
+	public List<Category> query();
 }
 
